@@ -21,8 +21,6 @@ public class CommentService {
 
     eventPublisher.publish(comment);
 
-    throwException();
-
     return savedComment;
   }
 

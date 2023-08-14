@@ -2,8 +2,8 @@ package boot.event.practice;
 
 import boot.event.ExternalClient;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.event.TransactionalEventListener;
 
@@ -15,7 +15,7 @@ public class MyEventListener {
   private final ExternalClient externalClient;
 
   @TransactionalEventListener
-  @Transactional
+  @Transactional(propagation = Propagation.REQUIRES_NEW)
   public void listen(final Notification notification) {
 
     final Notification savedNotification = notificationRepository.save(notification);
