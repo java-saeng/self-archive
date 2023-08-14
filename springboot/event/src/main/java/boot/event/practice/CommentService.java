@@ -21,6 +21,12 @@ public class CommentService {
 
     eventPublisher.publish(comment);
 
+    throwException();
+
     return savedComment;
+  }
+
+  private void throwException() {
+    throw new IllegalArgumentException();
   }
 }
