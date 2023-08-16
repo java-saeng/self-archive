@@ -27,6 +27,7 @@ public class MyEventListener {
 //    savedNotification.send();
 //  }
 
+  //  @Async
   @TransactionalEventListener
   @Transactional(propagation = Propagation.REQUIRES_NEW)
   public void listen(final Notification notification) {
