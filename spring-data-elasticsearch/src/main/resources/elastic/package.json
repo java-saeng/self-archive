@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "_class": {
+      "type": "keyword",
+      "index": false,
+      "doc_values": false
+    },
+    "description": {
+      "type": "text",
+      "index": false,
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "id": {
+      "type": "long"
+    },
+    "title": {
+      "type": "text"
+    }
+  }
+}
