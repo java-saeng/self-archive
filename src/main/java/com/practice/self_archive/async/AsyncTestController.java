@@ -1,20 +1,21 @@
 package com.practice.self_archive.async;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Slf4j
-@RequiredArgsConstructor
 @RestController
 public class AsyncTestController {
 
+    private static final Logger log = LoggerFactory.getLogger(AsyncTestController.class);
+
     private final AsyncTestService asyncTestService;
+
+    public AsyncTestController(AsyncTestService asyncTestService) {
+        this.asyncTestService = asyncTestService;
+    }
 
     @GetMapping("/async-default")
     public String asyncDefault(@RequestParam(value = "count", defaultValue = "5") int count) {

@@ -3,8 +3,6 @@ package com.practice.self_archive.async;
 import com.practice.self_archive.SelfArchiveApplication;
 import java.util.Map;
 import java.util.concurrent.Executor;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +11,20 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
-@Slf4j
 @Service
-@RequiredArgsConstructor
 public class AsyncTestService {
 
+    private static final Logger log = LoggerFactory.getLogger(AsyncTestService.class);
 
     private final ApplicationContext applicationContext;
 
-    // 기본 @Async (어떤 Executor가 사용되는지 테스트)
+    public AsyncTestService(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
+
+    /**
+     * 기본 @Async (어떤 Executor가 사용되는지 테스트)
+     */
     @Async
     public void asyncTest(int i) {
         try {
